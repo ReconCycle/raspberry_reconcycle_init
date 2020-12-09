@@ -45,6 +45,7 @@ docker build -t raspi:active .
 
 
 
+
 # setup automatic start of docker container
 
 docker run -d --restart always -v $HOME/reconcycle_config:/reconcycle_config --device /dev/mem --privileged --name ros1_active raspi:active
