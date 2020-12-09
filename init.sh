@@ -44,16 +44,11 @@ cd raspi-reconcycle-docker
 docker build -t raspi:active .
 
 
+#set dynamic startup
+
 
 
 # setup automatic start of docker container
 
-docker run -d --restart always -v $HOME/reconcycle_config:/reconcycle_config --device /dev/mem --privileged --name ros1_active raspi:active
+docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --restart always --device /dev/mem --privileged --name ros1_active raspi:active
 
-docker run -it --device /dev/mem --privileged --name ros1_active raspi:active
-
-
-
-
-
-export $ROS_MASTER_URI=$(<master_link.txt)
