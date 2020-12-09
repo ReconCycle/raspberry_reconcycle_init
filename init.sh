@@ -9,9 +9,6 @@ echo "Setup Raspberry for Reconcycle project"
 
 
 
-
-
-
 ## install docker package
 
 #Downloading the installation script with:
@@ -36,22 +33,16 @@ mkdir $HOME/reconcycle_config
 cp master_link.txt $HOME/reconcycle_config
 
 
-cd
-git clone --branch ros1_devel https://github.com/ReconCycle/raspi_ros.git 
-
-cp raspi_ros/config/active_config.yaml $HOME/reconcycle_config
-
-cp raspi_ros/config/raspberry4_config_template.yaml $HOME/reconcycle_config
-
-
+cp raspberry_reconcycle_init/active_config $HOME/reconcycle_config/ -r
 
 
 
 
 # build the docker image
-cd 
-cd raspi_ros/docker/
+git clone https://github.com/ReconCycle/raspi-reconcycle-docker.git
+cd raspi-reconcycle-docker
 docker build -t raspi:active .
+
 
 
 
@@ -59,7 +50,7 @@ docker build -t raspi:active .
 
 docker run -d --restart always -v $HOME/reconcycle_config:/reconcycle_config --device /dev/mem --privileged --name ros1_active raspi:active
 
-
+docker run -it --device /dev/mem --privileged --name ros1_active raspi:active
 
 
 
