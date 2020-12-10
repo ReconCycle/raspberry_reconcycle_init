@@ -30,7 +30,11 @@ sudo usermod -aG docker $USER
 mkdir $HOME/reconcycle_config
 
 # put in this folder initial master adress and hardware interface
+#set dynamic startup
+
 cp master_link.txt $HOME/reconcycle_config
+cp node_name.txt $HOME/reconcycle_config
+cp dynamic_startup.txt $HOME/reconcycle_config
 
 
 cp raspberry_reconcycle_init/active_config $HOME/reconcycle_config/ -r
@@ -44,7 +48,6 @@ cd raspi-reconcycle-docker
 docker build -t raspi:active .
 
 
-#set dynamic startup
 
 
 
