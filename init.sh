@@ -37,7 +37,7 @@ cp node_name.txt $HOME/reconcycle_config
 cp dynamic_startup.txt $HOME/reconcycle_config
 
 
-cp raspberry_reconcycle_init/active_config $HOME/reconcycle_config/ -r
+cp active_config $HOME/reconcycle_config/ -r
 
 
 
