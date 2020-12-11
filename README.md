@@ -15,3 +15,11 @@ chmod +x init.sh
 ./init.sh
 ```
 
+Set up specific raspberry 
+
+
+```sh
+cd %%raspberry_reconcycle_init/
+chmod +x init.sh
+./init.sh
+```%
