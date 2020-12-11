@@ -3,15 +3,15 @@ This repository contains the shell script and files required to automatically se
 
 First clone init repository
 
-'''sh
+```sh
 git clone https://github.com/ReconCycle/raspberry_reconcycle_init.git
-'''
+```
 
 Run init script
 
-'''sh
+```sh
 cd raspberry_reconcycle_init/
 chmod +x init.sh
 ./init.sh
-'''
+```
 
