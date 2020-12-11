@@ -7,7 +7,7 @@ echo "Setup Raspberry for Reconcycle project"
 # update the system
 
 
-
+echo "Create folders"
 
 ## prepare stuff for start
 
@@ -26,9 +26,13 @@ cp active_config $HOME/reconcycle_config/ -r
 
 cd $HOME
 
+echo "install docker package"
+
 ## install docker package
 
+
 #Downloading the installation script with:
+
 
 curl -fsSL https://get.docker.com -o get-docker.sh
 
@@ -40,12 +44,12 @@ sudo sh get-docker.sh
 
 sudo usermod -aG docker $USER
 
+echo "load and run docker package"
 
 # build the docker image
 git clone https://github.com/ReconCycle/raspi-reconcycle-docker.git
 cd raspi-reconcycle-docker
 docker build -t raspi:active .
-
 
 
 
