@@ -36,9 +36,16 @@ Run container init script in new terminal
 cd $HOME
 chmod +x init_container.sh
 ./init_container.sh
+```
 
+Prepare startup rutine
+```sh
+chmod +x $HOME/raspberry_reconcycle_init/startup_container.sh
+sudo cp $HOME/raspberry_reconcycle_init/startup_container.sh /etc/init.d/
 
 ```
+
+
 
 ## Set up specific raspberry 
 
