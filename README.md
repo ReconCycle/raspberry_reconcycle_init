@@ -1,6 +1,20 @@
 # raspberry_reconcycle_init
 This repository contains the shell script and files required to automatically set up Raspberry for reconcycle project.
 
+## System setup
+Plug board on HDMI display
+
+Install Rasperian or use preinstalled cars
+
+Update system 
+
+Enable SSH (main menu -> preferences -> Raspeberry Pi Configurations -> Interfaces -> enable SSH)
+
+Now you can work futher either trough desktop or ssh (sudo ssh pi@x.x.x.x)
+
+
+## Prepare file system
+
 First clone init repository
 
 ```sh
@@ -13,6 +27,17 @@ Run init script
 cd raspberry_reconcycle_init/
 chmod +x init.sh
 ./init.sh
+
+
+```
+Run container init script in new terminal
+
+```sh
+cd raspberry_reconcycle_init/
+chmod +x init_container.sh
+./init_container.sh
+
+
 ```
 
 ## Set up specific raspberry 
