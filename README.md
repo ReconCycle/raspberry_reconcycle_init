@@ -39,11 +39,13 @@ chmod +x init_container.sh
 ```
 
 Prepare startup rutine
-```sh
-chmod +x $HOME/raspberry_reconcycle_init/startup_container.sh
-sudo cp $HOME/raspberry_reconcycle_init/startup_container.sh /etc/init.d/
 
+```sh
+
+sudo nano /etc/rc.local
+docker container start ros1_active
 ```
+[//]: # (This may be the most platform independent comment)
 
 
 
