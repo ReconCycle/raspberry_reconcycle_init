@@ -33,7 +33,7 @@ chmod +x init.sh
 Run container init script in new terminal
 
 ```sh
-cd raspberry_reconcycle_init/
+cd $HOME
 chmod +x init_container.sh
 ./init_container.sh
 
