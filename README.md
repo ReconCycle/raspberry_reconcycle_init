@@ -38,14 +38,23 @@ chmod +x init_container.sh
 ./init_container.sh
 ```
 
-Prepare startup rutine
+Prepare startup rutine with crontab
 
+Open
 ```sh
 
-sudo nano /etc/rc.local
-docker container start ros1_active
+crontab -e
+
 ```
-[//]: # (This may be the most platform independent comment)
+
+Set that 60 seconds after rebbot runs the docker
+```bash
+
+@reboot sleep 60 && docker container restart ros1_active  && echo "restarting docker" | wall
+
+```
+[//]: # sudo nano /etc/rc.local
+[//]: # docker container start ros1_active
 
 
 
