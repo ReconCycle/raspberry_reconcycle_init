@@ -4,7 +4,7 @@ This repository contains the shell script and files required to automatically se
 ## System setup
 Plug board on HDMI display
 
-Install Rasperian or use preinstalled cars
+Install Rasperian or use preinstalled card
 
 Update system 
 
