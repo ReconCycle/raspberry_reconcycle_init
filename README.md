@@ -88,6 +88,7 @@ Restart raspberry (or docker) for activating new settings
 ```sh
 docker container stop ros1_active
 docker container rm ros1_active
+cd $HOME/raspi_reconcycle_docker
 docker image rm raspi:active
 docker build -t raspi:active .
 docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --device /dev/mem --privileged --name ros1_active raspi:active
