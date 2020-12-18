@@ -33,7 +33,7 @@ chmod +x init.sh
 Run container init script in new terminal
 
 ```sh
-cd $HOME
+cd $HOME/raspberry_reconcycle_init/
 chmod +x init_container.sh
 ./init_container.sh
 ```
@@ -53,8 +53,7 @@ Set that 60 seconds after rebbot runs the docker
 @reboot sleep 60 && docker container restart ros1_active  && echo "restarting docker" | wall
 
 ```
-[//]: # sudo nano /etc/rc.local
-[//]: # docker container start ros1_active
+
 
 
 
