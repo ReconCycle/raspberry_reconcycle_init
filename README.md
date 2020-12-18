@@ -47,7 +47,7 @@ crontab -e
 
 ```
 
-Set that 60 seconds after rebbot runs the docker
+Copy this in file and set that 60 seconds after reboot runs the docker
 ```bash
 
 @reboot sleep 60 && docker container restart ros1_active  && echo "restarting docker" | wall
