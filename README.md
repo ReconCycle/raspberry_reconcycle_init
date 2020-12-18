@@ -66,12 +66,16 @@ Copy this in file and set that 60 seconds after reboot runs the docker
 cd $HOME/reconcycle_config/
 ```
 
-Set name of your tool (this is then the name for ros namespace)
+Set name of your tool (this is then the name for ros namespace). 
+
+Open the folowing file in editor and write the name that you chose
 ```sh
 nano node_name.txt
 ```
 
 Set ROS_MASTER_URI
+
+Open the folowing file in editor and correct to the IP of computer that will run your ROS master
 ```sh
 nano master_link.txt
 ```
