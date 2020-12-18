@@ -10,6 +10,8 @@ Update system
 
 Enable SSH (main menu -> preferences -> Raspeberry Pi Configurations -> Interfaces -> enable SSH)
 
+Reboot the system!
+
 Now you can work futher either trough desktop or ssh (sudo ssh pi@x.x.x.x)
 
 
