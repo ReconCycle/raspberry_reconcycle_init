@@ -2,6 +2,7 @@
 echo "load and run docker package"
 
 # build the docker image
+cd $HOME
 git clone https://github.com/ReconCycle/raspi-reconcycle-docker.git
 cd raspi-reconcycle-docker
 docker build -t raspi:active .
