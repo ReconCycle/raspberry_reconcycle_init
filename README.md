@@ -76,3 +76,15 @@ nano master_link.txt
 ```
 
 Restart raspberry (or docker) for activating new settings 
+
+
+## Update (when you make changes to the packages building the raspi docker) 
+
+```sh
+docker container stop ros1_active
+docker container rm ros1_active
+docker image rm raspi:active
+docker build -t raspi:active .
+docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --device /dev/mem --privileged --name ros1_active raspi:active
+```
+
