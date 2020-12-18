@@ -82,7 +82,7 @@ nano master_link.txt
 
 Restart raspberry (or docker) for activating new settings 
 
-CHECK network configuration if AF_INET error!
+[CHECK](http://wiki.ros.org/ROS/NetworkSetup) network configuration if AF_INET error!
 
 
 ## Update (when you make changes to the packages building the raspi docker) 
