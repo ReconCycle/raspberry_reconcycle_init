@@ -6,6 +6,6 @@ export THIS_RAS_NAME=$(</reconcycle_config/node_name.txt)
 export ROS_IP=$(</reconcycle_config/ros_ip.txt)
 echo $ROS_MASTER_URI
 echo $ROS_IP
-roslaunch raspi_ros reconcycle.launch 
+roslaunch -- wait raspi_ros reconcycle.launch 
 
 exec "$@"
