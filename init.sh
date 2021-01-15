@@ -20,13 +20,19 @@ mkdir $HOME/reconcycle_config
 
 cp master_link.txt $HOME/reconcycle_config
 cp node_name.txt $HOME/reconcycle_config
+cp ros_ip.txt $HOME/reconcycle_config
 cp dynamic_startup.sh $HOME/reconcycle_config
 
 cp active_config $HOME/reconcycle_config/ -r
 
 cd $HOME
 
-echo "install docker package"
+if [ "$1" -gt "-1" ];
+  then echo hi
+
+
+
+  echo "install docker package"
 
 ## install docker package
 
@@ -42,6 +48,6 @@ sudo sh get-docker.sh
 
 # Add user to sudo docker
 
-sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER;
 
-
+fi
