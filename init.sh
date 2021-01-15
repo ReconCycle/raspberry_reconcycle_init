@@ -28,7 +28,7 @@ cp active_config $HOME/reconcycle_config/ -r
 cd $HOME
 
 if [ "$1" -gt "-1" ];
-  then echo hi
+  then 
 
 
 
@@ -48,6 +48,8 @@ sudo sh get-docker.sh
 
 # Add user to sudo docker
 
-sudo usermod -aG docker $USER;
+sudo usermod -aG docker $USER
+else 
 
+echo "dont install docker package"
 fi
