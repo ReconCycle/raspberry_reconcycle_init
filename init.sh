@@ -27,7 +27,7 @@ cp active_config $HOME/reconcycle_config/ -r
 
 cd $HOME
 
-if [ "$1" -gt "-1" ];
+if [  -n "$1"];
   then 
 
 
