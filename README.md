@@ -96,3 +96,20 @@ docker build -t raspi:active .
 docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --device /dev/mem --privileged --name ros1_active raspi:active
 ```
 
+
+
+
+sudo apt-get install ntp
+
+sudo apt-get install ntpdate
+
+sudo service ntp stop
+
+sudo ntpdate goodtime.ijs.si
+
+sudo service ntp start
+
+sudo timedatectl set-timezone Europe/Ljubljana
+
+
+
