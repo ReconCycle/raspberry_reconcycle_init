@@ -1,12 +1,13 @@
 # raspberry_reconcycle_init
-This repository contains the shell script and files required to automatically set up Raspberry for reconcycle project.
+This repository contains the shell scripts and files required to automatically set up the Raspberry for the Reconcycle project.
 
 ## System setup
-Plug board on HDMI display
 
-Install Rasperian or use preinstalled card
+1. Plug board on HDMI display
 
-Update system 
+1. Install Rasperian or use preinstalled card
+
+1. Update system 
 
 Enable SSH (main menu -> preferences -> Raspeberry Pi Configurations -> Interfaces -> enable SSH)
 
