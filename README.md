@@ -1,30 +1,32 @@
 # raspberry_reconcycle_init
+
 This repository contains the shell scripts and files required to automatically set up the Raspberry for the Reconcycle project.
 
-## System setup
+## System presetup
 
-1. Plug board on HDMI display
+Preparing the new Raspberry for further work:
 
-1. Install Rasperian or use preinstalled card
+1. install Rasbian or use preinstalled card,
 
-1. Update system 
+1. plug the Raspberry to the HDMI display and start the system,
 
-Enable SSH (main menu -> preferences -> Raspeberry Pi Configurations -> Interfaces -> enable SSH)
+1. update system, 
 
-Reboot the system!
+1. enable SSH (main menu -> settings -> Raspeberry Pi configurations -> interfaces -> enable SSH)
 
-Now you can work futher either trough desktop or ssh (sudo ssh pi@x.x.x.x)
+1. restart the system!
 
+Now you can continue either via the desktop or via SSH (sudo ssh pi@x.x.x.x).
 
 ## Prepare file system
 
-First clone init repository
+First clone this init repository
 
 ```sh
 git clone https://github.com/ReconCycle/raspberry_reconcycle_init.git
 ```
 
-Run init script
+Run init script to install Docker and create the required folders
 
 ```sh
 cd raspberry_reconcycle_init/
@@ -33,31 +35,13 @@ chmod +x init.sh
 
 
 ```
-Run container init script in new terminal
+In new terminal run container init script for preparing Docker image: https://github.com/ReconCycle/raspi-reconcycle-docker
 
 ```sh
 cd $HOME/raspberry_reconcycle_init/
 chmod +x init_container.sh
 ./init_container.sh
 ```
-
-Prepare startup rutine with crontab
-
-Open
-```sh
-
-crontab -e
-
-```
-
-Copy this in file and set that 60 seconds after reboot runs the docker
-```bash
-
-@reboot sleep 60 && docker container restart ros1_active  && echo "restarting docker" | wall
-
-```
-
-
 
 
 ## Set up specific raspberry 
@@ -67,21 +51,21 @@ Copy this in file and set that 60 seconds after reboot runs the docker
 cd $HOME/reconcycle_config/
 ```
 
-Set name of your tool (this is then the name for ros namespace). 
+### Set the name of your tool (this will later be the name for the ROS namespace). 
 
-Open the folowing file in editor and write the name that you chose
+Open the following file in an editor and write the name you have chosen
 ```sh
 nano node_name.txt
 ```
 
-Set ROS_MASTER_URI
+### Set ROS_MASTER_URI
 
-Open the folowing file in editor and correct to the IP of computer that will run your ROS master
+Open the following file in an editor and correct to the IP of computer that will run your ROS master
 ```sh
 nano master_link.txt
 ```
 
-Restart raspberry (or docker) for activating new settings 
+Restart Raspberry (or docker) for activating new settings 
 
 [CHECK](http://wiki.ros.org/ROS/NetworkSetup) network configuration if AF_INET error!
 
@@ -98,8 +82,25 @@ docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --devic
 ```
 
 
+## Optional: Prepare startup rutine with crontab
 
+Open
+```sh
 
+crontab -e
+
+```
+
+Copy this in file and set that 60 seconds after reboot runs the docker
+```bash
+
+@reboot sleep 60 && docker container restart ros1_active  && echo "restarting docker" | wall
+
+```
+
+## Optional: Set correct NTP
+
+```bash
 sudo apt-get install ntp
 
 sudo apt-get install ntpdate
@@ -111,6 +112,6 @@ sudo ntpdate goodtime.ijs.si
 sudo service ntp start
 
 sudo timedatectl set-timezone Europe/Ljubljana
-
+```
 
 
