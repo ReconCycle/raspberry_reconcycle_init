@@ -2,6 +2,9 @@
 
 This repository contains the shell scripts and files required to automatically set up the Raspberry for the Reconcycle project.
 
+
+In future work, this will be changed to docker-compose!
+
 ## System presetup
 
 Preparing the new Raspberry for further work:
