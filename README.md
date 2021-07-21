@@ -72,6 +72,17 @@ Restart Raspberry (or docker) for activating new settings
 
 [CHECK](http://wiki.ros.org/ROS/NetworkSetup) network configuration if AF_INET error!
 
+### Set ROS_IP
+
+Find your Raspberry's IP with ifconfig, and write it to
+
+```sh
+nano ros_ip.txt
+```
+
+
+
+
 
 ## Update (when you make changes to the packages building the raspi docker) 
 
