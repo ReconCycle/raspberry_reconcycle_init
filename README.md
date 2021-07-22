@@ -63,7 +63,9 @@ nano node_name.txt
 
 ### Set ROS_MASTER_URI
 
-Open the following file in an editor and correct to the IP of computer that will run your ROS master
+Open the following file in an editor and correct to the IP of computer that will run your ROS master. It must have the http:// prefix, for example
+http://192.168.0.1:11311/
+
 ```sh
 nano master_link.txt
 ```
@@ -74,7 +76,7 @@ Restart Raspberry (or docker) for activating new settings
 
 ### Set ROS_IP
 
-Find your Raspberry's IP with ifconfig, and write it to
+Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example "192.168.0.1"
 
 ```sh
 nano ros_ip.txt
