@@ -131,3 +131,14 @@ pin_configs:
   config_name: ''
   pin_number: 26
   service_name: ''
+ - actual_config: empty
+  available_config: [DigitalInput, DigitalOutput, empty]
+  config_name: ''
+  pin_number: 27
+  service_name: ''
+- actual_config: empty
+  available_config: [DigitalInput, DigitalOutput, empty]
+  config_name: ''
+  pin_number: 28
+  service_name: ''
+
