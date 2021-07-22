@@ -76,7 +76,7 @@ Restart Raspberry (or docker) for activating new settings
 
 ### Set ROS_IP
 
-Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example "192.168.0.1"
+Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example 192.168.0.1    (there must not be http:// prefix!)
 
 ```sh
 nano ros_ip.txt
