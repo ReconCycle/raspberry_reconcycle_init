@@ -18,9 +18,6 @@ mkdir $HOME/reconcycle_config
 # put in this folder initial master adress and hardware interface
 #set dynamic startup
 
-cp master_link.txt $HOME/reconcycle_config
-cp node_name.txt $HOME/reconcycle_config
-cp ros_ip.txt $HOME/reconcycle_config
 cp dynamic_startup.sh $HOME/reconcycle_config
 
 cp active_config $HOME/reconcycle_config/ -r

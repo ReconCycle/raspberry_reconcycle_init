@@ -56,19 +56,20 @@ cd $HOME/reconcycle_config/
 
 ### Set the name of your tool (this will later be the name for the ROS namespace). 
 
-Open the following file in an editor and write the name you have chosen
-```sh
-nano node_name.txt
-```
+~~Open the following file in an editor and write the name you have chosen
+nano node_name.txt~~
+Set ENV variable NODE_NAME in docker file
+
 
 ### Set ROS_MASTER_URI
 
-Open the following file in an editor and correct to the IP of computer that will run your ROS master. It must have the http:// prefix, for example
-http://192.168.0.1:11311/
+~~Open the following file in an editor and correct to the IP of computer that will run your ROS master. It must have the http:// prefix, for example
+http://192.168.0.1:11311/~~
 
-```sh
-nano master_link.txt
-```
+~~nano master_link.txt~~
+
+Set ROS\_MASTER\_URI variable in docker file.
+
 
 Restart Raspberry (or docker) for activating new settings 
 
@@ -76,14 +77,11 @@ Restart Raspberry (or docker) for activating new settings
 
 ### Set ROS_IP
 
-Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example 192.168.0.1    (there must not be http:// prefix!)
+~~Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example 192.168.0.1    (there must not be http:// prefix!)~~
 
-```sh
-nano ros_ip.txt
-```
+~~nano ros_ip.txt~~
 
-
-
+Set THIS\_ROS\_IP variable in the docker file.
 
 
 ## Update (when you make changes to the packages building the raspi docker) 
