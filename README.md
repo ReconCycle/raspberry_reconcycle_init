@@ -2,91 +2,69 @@
 
 This repository contains the shell scripts and files required to automatically set up the Raspberry for the Reconcycle project.
 
-
-In future work, this will be changed to docker-compose!
-
 ## System presetup
 
 Preparing the new Raspberry for further work:
 
 1. install Rasbian or use preinstalled card,
-
-1. plug the Raspberry to the HDMI display and start the system,
-
-1. update system, 
-
-1. enable SSH (main menu -> settings -> Raspeberry Pi configurations -> interfaces -> enable SSH)
-
-1. restart the system!
+2. plug the Raspberry to the HDMI display and start the system,
+3. enable SSH (main menu -> settings -> Raspeberry Pi configurations -> interfaces -> enable SSH)
+4. update and restart the system!
 
 Now you can continue either via the desktop or via SSH (sudo ssh pi@x.x.x.x).
 
-## Prepare file system
+## Prepare the file system
 
-First clone this init repository
+First clone this template repository
 
 ```sh
 git clone https://github.com/ReconCycle/raspberry_reconcycle_init.git
 ```
 
-Run init script to install Docker and create the required folders
+Run the initialisation script to install docker configuration and create the required folders
 
 ```sh
 cd raspberry_reconcycle_init/
 chmod +x init.sh
 ./init.sh
-
-
 ```
-In new terminal run container init script for preparing Docker image: https://github.com/ReconCycle/raspi-reconcycle-docker
+
+<!--
+In a new terminal run container init script for preparing Docker image: https://github.com/ReconCycle/raspi-reconcycle-docker
 
 ```sh
 cd $HOME/raspberry_reconcycle_init/
 chmod +x init_container.sh
 ./init_container.sh
 ```
+-->
 
+## Set up the specific raspberry 
 
-## Set up specific raspberry 
-
-
+Open the docker-compose.yaml template.
 ```sh
-cd $HOME/reconcycle_config/
-```
-
-### Set the name of your tool (this will later be the name for the ROS namespace). 
-
-Open the following file in an editor and write the name you have chosen
-```sh
+cd $HOME/reconcycle_config
 nano node_name.txt
 ```
 
-### Set ROS_MASTER_URI
+Scroll to the environment variables section:
 
-Open the following file in an editor and correct to the IP of computer that will run your ROS master. It must have the http:// prefix, for example
-http://192.168.0.1:11311/
-
-```sh
-nano master_link.txt
+```yaml
+    environment:
+      - ROS_MASTER_URI=http://10.20.0.1:11311
+      - ROS_IP=10.20.1.XXX
+      - THIS_RAS_NAME='example'
 ```
 
-Restart Raspberry (or docker) for activating new settings 
+1. Set `ROS_MASTER_URI` to have the correct IP of the computer that runs ROS master. The variable must include the protocol and port, for example
+http://192.168.0.1:11311
+2. Set `ROS_IP` to match with the Raspberry's IP. Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example 192.168.0.1
+3. Set the name of your tool (this will later be the name for the ROS namespace) by changing the `THIS_RAS_NAME`.
 
 [CHECK](http://wiki.ros.org/ROS/NetworkSetup) network configuration if AF_INET error!
 
-### Set ROS_IP
 
-Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example 192.168.0.1    (there must not be http:// prefix!)
-
-```sh
-nano ros_ip.txt
-```
-
-
-
-
-
-## Update (when you make changes to the packages building the raspi docker) 
+<!-- ## Update (when you make changes to the packages building the raspi docker) 
 
 ```sh
 docker container stop ros1_active
@@ -113,13 +91,12 @@ Copy this in file and set that 60 seconds after reboot runs the docker
 @reboot sleep 60 && docker container restart ros1_active  && echo "restarting docker" | wall
 
 ```
+-->
 
 ## Optional: Set correct NTP
 
 ```bash
-sudo apt-get install ntp
-
-sudo apt-get install ntpdate
+sudo apt-get install ntp ntpdate
 
 sudo service ntp stop
 
