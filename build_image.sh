@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo "Load and run docker package"
+echo "Load and build docker package"
 
 # Obtain dockerfile
-cd $HOME
+cd $HOME/raspi_reconcycle_init
 git clone https://github.com/ReconCycle/raspi-reconcycle-docker.git
 cd raspi-reconcycle-docker
 
