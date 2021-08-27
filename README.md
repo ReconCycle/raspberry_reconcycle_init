@@ -18,33 +18,33 @@ Now you can continue either via the desktop or via SSH (sudo ssh pi@x.x.x.x).
 First clone this template repository
 
 ```sh
+cd
 git clone https://github.com/ReconCycle/raspberry_reconcycle_init.git
 ```
 
 Run the initialisation script to install docker configuration and create the required folders
 
 ```sh
-cd raspberry_reconcycle_init/
+cd ~/raspberry_reconcycle_init
 chmod +x init.sh
 ./init.sh
 ```
 
-<!--
-In a new terminal run container init script for preparing Docker image: https://github.com/ReconCycle/raspi-reconcycle-docker
+In a new terminal run container init script for preparing Docker image (from https://github.com/ReconCycle/raspi-reconcycle-docker)
 
 ```sh
-cd $HOME/raspberry_reconcycle_init/
+cd ~/raspberry_reconcycle_init/
 chmod +x init_container.sh
 ./init_container.sh
 ```
--->
 
 ## Set up the specific raspberry 
 
-Open the docker-compose.yaml template.
+Copy the docker-compose.yaml template and edit it.
 ```sh
-cd $HOME/reconcycle_config
-nano node_name.txt
+cd raspi-reconcycle-docker
+cp docker-compose-template.yaml ~/reconcycle_config/docker-compose.yaml
+nano ~/reconcycle_config/docker-compose.yaml
 ```
 
 Scroll to the environment variables section:
@@ -61,49 +61,46 @@ http://192.168.0.1:11311
 2. Set `ROS_IP` to match with the Raspberry's IP. Find your Raspberry's IP with ifconfig, and write it to ros_ip.txt, for example 192.168.0.1
 3. Set the name of your tool (this will later be the name for the ROS namespace) by changing the `THIS_RAS_NAME`.
 
-[CHECK](http://wiki.ros.org/ROS/NetworkSetup) network configuration if AF_INET error!
+Check [network setup](http://wiki.ros.org/ROS/NetworkSetup) if you encounter the AF_INET error!
 
+## Start docker-compose service
 
-<!-- ## Update (when you make changes to the packages building the raspi docker) 
+You're all set. Start the docker with:
 
 ```sh
-docker container stop ros1_active
-docker container rm ros1_active
-cd $HOME/raspi_reconcycle_docker
-docker image rm raspi:active
-docker build -t raspi:active .
-docker run -d -v $HOME/reconcycle_config/:/reconcycle_config/ --net=host --device /dev/mem --privileged --name ros1_active raspi:active
+cd ~/raspberry_config/
+docker-compose up -d
 ```
 
+### Restarting (after ros master or raspberry's ip changed)
+Each time roscore is restarted on the master computer, or one of the ips changed, the environment variables should be updated in the docker-compose file.
+After that the docker should be restarted with:
 
-## Optional: Prepare startup rutine with crontab
-
-Open
 ```sh
-
-crontab -e
-
+cd ~/raspberry_config/
+docker-compose restart
 ```
 
-Copy this in file and set that 60 seconds after reboot runs the docker
-```bash
+### Upgrading (after changes in the software)
+When you make changes to the packages in the raspi docker, you have to stop the service and rebuild the docker.
 
-@reboot sleep 60 && docker container restart ros1_active  && echo "restarting docker" | wall
-
+```sh
+cd ~/raspberry_config/
+docker-compose down
+cd ~/raspberry_reconcycle_init
+./init_container.sh
+docker-compose restart
 ```
--->
 
-## Optional: Set correct NTP
+## Troubleshooting
+
+### Set correct NTP
 
 ```bash
 sudo apt-get install ntp ntpdate
-
 sudo service ntp stop
-
 sudo ntpdate goodtime.ijs.si
-
 sudo service ntp start
-
 sudo timedatectl set-timezone Europe/Ljubljana
 ```
 
