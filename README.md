@@ -14,7 +14,8 @@ Preparing the new Raspberry for further work:
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo apt-get install libffi-dev libssl-dev python3-pip
-sudo pip3 install docker-compose
+#sudo pip3 install docker-compose
+sudo apt install docker-compose
 ```
 * Add user to docker group 
 ```sh
